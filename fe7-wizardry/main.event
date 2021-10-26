@@ -5,6 +5,7 @@
 
     ORG $0D00000
 
+    #include "wizardry/fix-proc-names.event"
     #include "wizardry/anti-huffman/anti-huffman.event"
     #include "wizardry/ai-fast-danger/ai-fast-danger.event"
     #include "wizardry/flames-recolor/flames-recolor.event"

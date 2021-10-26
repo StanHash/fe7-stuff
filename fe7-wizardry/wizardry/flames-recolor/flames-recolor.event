@@ -1,9 +1,11 @@
+// allows the hacker to change the color modifiers for the fire weather effect
+// hack by stan
 
 #include "Extensions/Hack Installation.txt"
 
 PUSH
 
-    // ApplyFlamesWeatherGradient
+    // replace ApplyFlamesWeatherGradient
     ORG $02D984
         jumpToHack(NuApplyFlamesWeatherGradient)
 

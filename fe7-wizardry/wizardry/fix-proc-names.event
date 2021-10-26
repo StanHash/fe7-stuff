@@ -1,0 +1,9 @@
+// clears proc name on spawn
+// hack by stan
+
+PUSH
+
+    ORG $0044B6
+    SHORT $6129 $2026 $5429 $3002 $5429
+
+POP
