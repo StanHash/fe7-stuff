@@ -1,5 +1,4 @@
-typedef signed char i8;
-typedef unsigned short u16;
+#include "types.h"
 
 enum { BGPAL_TILESET = 6 };
 
