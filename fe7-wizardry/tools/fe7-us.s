@@ -33,6 +33,7 @@ fun 0x8003B8D, RestoreBgm
 fun 0x8003C71, StartBgmVolumeChange
 fun 0x8003EA1, PlaySongDelayed
 fun 0x8003F15, PlaySongCore
+fun 0x8004365, DecodeStringRam
 fun 0x8004495, SpawnProc
 fun 0x80044F9, SpawnProcLocking
 fun 0x8004585, Proc_End
@@ -271,6 +272,8 @@ fun 0x800FBD9, EvtCmd_MenuOverrideEnable
 fun 0x8012B39, GetGameControlProc
 fun 0x8012B49, SetNextGameAction
 fun 0x8012B5D, SetNextChapter
+fun 0x8012C61, GetMsg
+fun 0x8012C9D, GetMsgTo
 fun 0x8013169, Decompress
 fun 0x8013EB9, FadeExists
 fun 0x8013F01, StartFadeToBlack
@@ -296,16 +299,19 @@ fun 0x8015C05, GetCameraAdjustedCenter
 fun 0x8015C59, CameraMoveWatchPositionCenter
 fun 0x8015CE1, CameraMoveWatchPosition
 fun 0x8016175, CreateItem
+fun 0x80161A5, CanUnitUseWeapon
 fun 0x8017149, BreakItemSealForPid
 fun 0x80171B5, GetItemIid
 fun 0x801725D, GetItemKind
 fun 0x8017295, GetItemUses
+fun 0x80172E1, GetItemMight
 fun 0x8017509, ClearUnit
 fun 0x8017D35, GetUnitByPid
 fun 0x8017EB9, UnitChangeFaction
 fun 0x8017F29, UnitSyncMovement
 fun 0x80180ED, UnitBeginAction
 fun 0x8018165, UnitBeginReMoveAction
+fun 0x8018AD1, GetUnitPower
 fun 0x8018D0D, GetUnit
 fun 0x8018D89, InitMapForChapter
 fun 0x8018E85, InitChapterPreviewMap
@@ -328,6 +334,7 @@ fun 0x801D635, IsMapFadeActive
 fun 0x801D8B1, HandleGiveUnitItem
 fun 0x801DB59, SetVisionWithFade
 fun 0x801DB95, SetVision
+fun 0x80238B1, AreUnitIdsAllied
 fun 0x8023905, GetGold
 fun 0x8023911, SetGold
 fun 0x8024C99, ApplyUnitSpritePalettes
@@ -396,7 +403,10 @@ fun 0x8031585, GetChapterMap
 fun 0x80315A1, GetChapterMapChanges
 fun 0x80327AD, IsSubtitleHelpActive
 fun 0x803523D, AiEndMuAndRefreshUnits
+fun 0x8035DA5, AiCouldReachByBirdsEyeDistance
+fun 0x8036651, AiMakeMoveRangeMapsForUnitAndWeapon
 fun 0x8036ED9, AiGetUnitClosestValidPosition
+fun 0x80393E9, AiFillDangerMap
 fun 0x804A211, LoadUiFrameGraphics
 fun 0x804AB9D, ClearMenuOverrides
 fun 0x804AC1D, SetMenuOverride
@@ -430,6 +440,18 @@ fun 0x80BEDAD, m4aMPlayStop
 fun 0x80BF53D, m4aMPlayVolumeControl
 fun 0x80BFA0D, CpuSetFast
 fun 0x80BFC51, _call_via_r1
+fun 0x80BFC55, _call_via_r2
+fun 0x80BFC89, __divsi3
+fun 0x80BFD1D, __div0
+fun 0x80BFD21, __modsi3
+fun 0x80BFDF1, __muldi3
+fun 0x80BFE61, __udivsi3
+fun 0x80BFED9, __umodsi3
+fun 0x80BFF99, memcpy
+fun 0x80BFFF9, memset
+fun 0x80C00C9, strcpy
+fun 0x80C0115, strlen
+fun 0x80C0159, strstr
 fun 0x80C57B5, TmApplyTsa_t
 
 dat 0x20027DC, gWeatherEffect
@@ -438,8 +460,11 @@ dat 0x2022860, gPal
 dat 0x2023C60, gBg2Tm
 dat 0x2028D70, gActiveFont
 dat 0x2028D78, gSpecialCharStList
+dat 0x202A5B4, gCurrentMsgBuf
+dat 0x202B5B4, gCurrentMsgId
 dat 0x202BBB8, gBmSt
 dat 0x202BBF8, gPlaySt
+dat 0x202BD48, gActiveUnitId
 dat 0x202E3D8, gMapSize
 dat 0x202E3DC, gMapUnit
 dat 0x202E3E0, gMapTerrain
@@ -455,6 +480,7 @@ dat 0x203A470, gBattleUnitB
 dat 0x203A50C, gBattleHitIt
 dat 0x203A518, gTraps
 dat 0x203A85C, gAction
+dat 0x3003940, DecodeStringFunc
 dat 0x3004690, gActiveUnit
 dat 0x8194594, Pal_UnitSprites
 dat 0x8194614, Pal_UnitSpritesPurple
@@ -462,6 +488,7 @@ dat 0x8194634, Pal_UnitSpritesExtra
 dat 0x8199578, Img_FlamesParticles
 dat 0x81995B8, Pal_FlamesParticles
 dat 0x81C3FCC, gWeatherParticleTemplates
+dat 0x8B808AC, MsgTable
 dat 0x8B857F8, gKeySt
 dat 0x8B907C0, ProcScr_Face
 dat 0x8B909B8, gTalkSt

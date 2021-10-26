@@ -1,10 +1,12 @@
 
     // Set prologue weather
     ORG $0C9A212
-        BYTE 5
+    BYTE 5
 
     ORG $0D00000
 
+    #include "wizardry/anti-huffman/anti-huffman.event"
+    #include "wizardry/ai-fast-danger/ai-fast-danger.event"
     #include "wizardry/flames-recolor/flames-recolor.event"
 
     ASSERT $0D90000 - CURRENTOFFSET

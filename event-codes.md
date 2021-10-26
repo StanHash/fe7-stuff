@@ -150,7 +150,7 @@ Displays talk msg. Talk bubbles are opaque, allowing for other transparency effe
 - `TEXTIFEM msg_em msg_hm` (traditional)
 - `TEXT_IFMODE msg_em msg_hm` (peerless)
 
-Displays talk msg. Talk bubbles are opaque, allowing for other transparency effect to occur on screen. Doesn't do anything if player skipped scene. Resets talk skip flag.
+Displays talk msg. Which msg is displayed depends on current game mode. Doesn't do anything if player skipped scene. Resets talk skip flag.
 
     layout:
     +00 | half | (id)
