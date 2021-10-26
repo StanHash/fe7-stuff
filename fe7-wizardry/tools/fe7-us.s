@@ -56,6 +56,8 @@ fun 0x8005475, InitText
 fun 0x80054E1, ClearText
 fun 0x8005A41, InitSystemTextFont
 fun 0x8006B35, InitFaces
+fun 0x8006C09, StartFaceAuto
+fun 0x8006C35, StartFace
 fun 0x8007565, StartFaceFadeOut
 fun 0x8007DF9, InitTalk
 fun 0x800801D, StartTalkMsg
@@ -312,6 +314,7 @@ fun 0x8017F29, UnitSyncMovement
 fun 0x80180ED, UnitBeginAction
 fun 0x8018165, UnitBeginReMoveAction
 fun 0x8018AD1, GetUnitPower
+fun 0x8018BD9, GetUnitFid
 fun 0x8018D0D, GetUnit
 fun 0x8018D89, InitMapForChapter
 fun 0x8018E85, InitChapterPreviewMap
@@ -408,6 +411,8 @@ fun 0x8036651, AiMakeMoveRangeMapsForUnitAndWeapon
 fun 0x8036ED9, AiGetUnitClosestValidPosition
 fun 0x80393E9, AiFillDangerMap
 fun 0x804A211, LoadUiFrameGraphics
+fun 0x804A271, StartMenu
+fun 0x804A281, StartMenuExt
 fun 0x804AB9D, ClearMenuOverrides
 fun 0x804AC1D, SetMenuOverride
 fun 0x806BAF1, StartMu
@@ -513,7 +518,9 @@ dat 0x8B92E38, ProcScr_CamMove
 dat 0x8B92EB0, UnitLut
 dat 0x8B932B4, gMapBaseTiles
 dat 0x8B9362C, ProcScr_8B9362C
+dat 0x8B95A88, MenuInfo_ItemReview
 dat 0x8B969E4, ProcScr_SubtitleHelpDarkener
 dat 0x8B96A14, ProcScr_8B96A14
+dat 0x8B9A8A0, ProcScr_Menu
 dat 0x8BE222C, ItemInfoTable
 dat 0x8C9C9C8, ChapterAssetLut

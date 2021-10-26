@@ -8,6 +8,7 @@
     #include "wizardry/fix-proc-names.event"
     #include "wizardry/anti-huffman/anti-huffman.event"
     #include "wizardry/ai-fast-danger/ai-fast-danger.event"
+    #include "wizardry/generic-face-fix/generic-face-fix.event"
     #include "wizardry/flames-recolor/flames-recolor.event"
 
     ASSERT $0D90000 - CURRENTOFFSET
