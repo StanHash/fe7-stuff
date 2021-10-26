@@ -1,6 +1,9 @@
+// optimized ai danger map generation
+// hack by stan, based on similar fe8 hack by hypergammaspaces
 
 PUSH
 
+    // replace AiFillDangerMap
     ORG $0393E8
 
     #include "src/ai-fast-danger.lyn.event"
