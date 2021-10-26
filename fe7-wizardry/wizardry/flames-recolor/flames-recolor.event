@@ -1,0 +1,21 @@
+
+#include "Extensions/Hack Installation.txt"
+
+PUSH
+
+    // ApplyFlamesWeatherGradient
+    ORG $02D984
+        jumpToHack(NuApplyFlamesWeatherGradient)
+
+    // in FlamesWeatherInitGradient
+    ORG $02DA12
+        BL($02D984) // bl ApplyFlamesWeatherGradient
+        B($02DA72)
+
+POP
+
+FlamesRecolorModifiers:
+    //     r    g    b
+    BYTE  (0) (-1)  (1)
+
+#include "src/flames-recolor.lyn.event"

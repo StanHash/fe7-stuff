@@ -1,0 +1,6 @@
+*.gba
+*.sym
+*.sav
+*.asm
+*.o
+*.lyn.event

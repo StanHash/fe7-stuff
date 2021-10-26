@@ -1,0 +1,10 @@
+
+    // Set prologue weather
+    ORG $0C9A212
+        BYTE 5
+
+    ORG $0D00000
+
+    #include "wizardry/flames-recolor/flames-recolor.event"
+
+    ASSERT $0D90000 - CURRENTOFFSET
