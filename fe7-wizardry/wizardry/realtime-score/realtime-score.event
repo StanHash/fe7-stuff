@@ -1,0 +1,33 @@
+// work in progress
+// hack by stan
+
+    // add new chapter objective display
+
+    #include "src/realtime-score-window.lyn.event"
+
+    ALIGN 2
+RS_NuChapterGoalWindowDrawCase:
+    SHORT $0038 // movs r0, r7 @ arg r0 = proc
+    BL(RS_NuChapterGoalWindowDraw)
+    SHORT $BCF0 // pop  {r4-r7}
+    SHORT $BC01 // pop  {r0}
+    SHORT $4700 // bx   r0
+
+    ALIGN 4
+RS_ChapterGoalWindowDrawJt:
+    /* 00 */ WORD 0x08085E70
+    /* 01 */ WORD 0x08085E78
+    /* 02 */ WORD 0x08085ECC
+    /* 03 */ WORD 0x08085E70
+    /* 04 */ WORD 0x08085E70
+    /* 05 */ POIN RS_NuChapterGoalWindowDrawCase
+
+    PUSH
+
+    ORG $085E42
+    BYTE 5 // was 4
+
+    ORG $085E58
+    POIN RS_ChapterGoalWindowDrawJt
+
+    POP

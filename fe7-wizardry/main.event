@@ -3,6 +3,10 @@
     ORG $0C9A212
     BYTE 5
 
+    // Set prologue objective
+    ORG $0C9A290
+    BYTE 5
+
     ORG $0D00000
 
     #include "wizardry/fix-proc-names.event"
@@ -10,5 +14,6 @@
     #include "wizardry/ai-fast-danger/ai-fast-danger.event"
     #include "wizardry/generic-face-fix/generic-face-fix.event"
     #include "wizardry/flames-recolor/flames-recolor.event"
+    #include "wizardry/realtime-score/realtime-score.event"
 
     ASSERT $0D90000 - CURRENTOFFSET

@@ -12,6 +12,10 @@
 
 fun 0x800043C, TmApplyTsa
 fun 0x8000EDD, RandNextB
+fun 0x8000F15, GetGameTime
+fun 0x8000F2D, SetGameTime
+fun 0x8000F49, IncGameTime
+fun 0x8000F81, FormatTime
 fun 0x8000FFD, EnableBgSync
 fun 0x800105D, EnablePalSync
 fun 0x8001085, ApplyPalettes
@@ -54,7 +58,18 @@ fun 0x8005439, ResetTextFont
 fun 0x8005451, SetTextFont
 fun 0x8005475, InitText
 fun 0x80054E1, ClearText
+fun 0x8005575, Text_SetCursor
+fun 0x8005579, Text_Skip
+fun 0x8005581, Text_SetColor
+fun 0x80056A9, GetStringTextCenteredPos
+fun 0x8005719, Text_DrawString
+fun 0x800578D, Text_DrawNumber
+fun 0x80057D9, Text_DrawNumberOrBlank
+fun 0x8005815, Text_DrawCharacter
 fun 0x8005A41, InitSystemTextFont
+fun 0x8005B19, Text_InsertDrawString
+fun 0x8005B3D, Text_InsertDrawNumberOrBlank
+fun 0x8005FF5, StartGreenText
 fun 0x8006B35, InitFaces
 fun 0x8006C09, StartFaceAuto
 fun 0x8006C35, StartFace
@@ -437,6 +452,7 @@ fun 0x807A3C9, IsTactFemale
 fun 0x807A3E9, IsTutorialDisabled
 fun 0x807EE3D, GetLynModeDeathFlag
 fun 0x807EE4D, SetLynModeDeathFlag
+fun 0x80868B9, CountUnitsByFaction
 fun 0x80BE595, PlaySong
 fun 0x80BE72D, m4aMPlayFadeOut
 fun 0x80BE75D, m4aMPlayFadeIn
@@ -485,6 +501,7 @@ dat 0x203A470, gBattleUnitB
 dat 0x203A50C, gBattleHitIt
 dat 0x203A518, gTraps
 dat 0x203A85C, gAction
+dat 0x3000010, gGameTime
 dat 0x3003940, DecodeStringFunc
 dat 0x3004690, gActiveUnit
 dat 0x8194594, Pal_UnitSprites

@@ -18,6 +18,6 @@ POP
 
 FlamesRecolorModifiers:
     //     r    g    b
-    BYTE  (0) (-1)  (1)
+    BYTE  (2)  (0)  (0)
 
 #include "src/flames-recolor.lyn.event"
