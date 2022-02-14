@@ -1,0 +1,21 @@
+// disable minimap feature for certain chapters (fe7-us)
+// hack by 7743, adapted by stan
+
+// this is meant to be used in chapters that feature black ("thracia") fog
+
+#include "EAstdlib.event"
+#include "Extensions/Hack Installation.txt"
+
+PUSH
+
+    ORG $0A3288
+    jumpToHack(DisableMiniMapHook)
+
+POP
+
+DisableMinimapList:
+    // BYTE 0x00 // your chapter id here
+    // BYTE 0x01 // add however much you want
+    BYTE 0xFF // end
+
+#include "src/disable-minimap.lyn.event"

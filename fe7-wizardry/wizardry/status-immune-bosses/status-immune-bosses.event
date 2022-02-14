@@ -1,0 +1,22 @@
+// make bosses immune to bad statuses
+// hack by stan
+
+#include "Extensions/Hack Installation.txt"
+
+PUSH
+
+    // in UpdateUnitFromBattle
+    ORG $029C44
+
+    jumpToHack(StatusImmuneBossesBattleOutputStatusHook)
+    ASSERT $029C4C - CURRENTOFFSET
+
+    // in item-action:ApplyStatusChange
+    ORG $02D25C
+
+    jumpToHack(StatusImmuneBossesStaffOutputStatusHook)
+    ASSERT $02D264 - CURRENTOFFSET
+
+POP
+
+#include "src/status-immune-bosses-hooks.lyn.event"

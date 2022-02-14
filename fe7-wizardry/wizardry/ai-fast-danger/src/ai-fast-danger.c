@@ -27,6 +27,7 @@ void NuAiFillDangerMap(void)
 
     int map_size_x_m1 = gMapSize.x - 1;
     int map_size_y_m1 = gMapSize.y - 1;
+    int active_unit_id = gActiveUnitId;
 
     for (i = 1; i < 0xC0; ++i)
     {
@@ -38,10 +39,10 @@ void NuAiFillDangerMap(void)
         if (unit->pinfo == NULL)
             continue;
 
-        if (unit->state & (US_HIDDEN | US_DEAD | US_NOT_DEPLOYED | US_BIT12))
+        if (unit->state & (UNIT_FLAG_HIDDEN | UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED | UNIT_FLAG_BIT12))
             continue;
 
-        if (AreUnitIdsAllied(gActiveUnitId, unit->id))
+        if (AreUnitIdsAllied(active_unit_id, (u8) unit->id))
             continue;
 
         int item = 0;

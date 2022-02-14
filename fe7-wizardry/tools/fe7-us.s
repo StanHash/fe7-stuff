@@ -11,6 +11,18 @@
 .endm
 
 fun 0x800043C, TmApplyTsa
+fun 0x8000A51, AgbMain
+fun 0x8000B1D, PutBuildInfo
+fun 0x8000B59, IrqInit
+fun 0x8000BE1, NextRN
+fun 0x8000CA9, RandInit
+fun 0x8000D75, RandSetSt
+fun 0x8000DD1, RandGetSt
+fun 0x8000E05, RandNext_100
+fun 0x8000E31, RandNext
+fun 0x8000E61, RandRoll
+fun 0x8000E85, RandRoll2Rn
+fun 0x8000EC1, RandInitB
 fun 0x8000EDD, RandNextB
 fun 0x8000F15, GetGameTime
 fun 0x8000F2D, SetGameTime
@@ -18,10 +30,15 @@ fun 0x8000F49, IncGameTime
 fun 0x8000F81, FormatTime
 fun 0x8000FFD, EnableBgSync
 fun 0x800105D, EnablePalSync
-fun 0x8001085, ApplyPalettes
+fun 0x8001085, ApplyPaletteExt
 fun 0x8001399, GetBgChrOffset
 fun 0x8001811, TmFill
+fun 0x8001865, SetOnVBlank
+fun 0x80019D5, RunMainFunc
+fun 0x8001BC9, RefreshKeySt
+fun 0x8001C51, InitKeySt
 fun 0x8001D8D, SetBgOffset
+fun 0x8002CF5, SoftResetIfKeyCombo
 fun 0x8002F35, SetOnHBlankB
 fun 0x80034DD, GetCurrentBgmSong
 fun 0x80035B1, SetBgmVolume
@@ -49,6 +66,7 @@ fun 0x80047E9, Proc_LockEachMarked
 fun 0x800486D, Proc_EndEach
 fun 0x8004CE9, InitIcons
 fun 0x8004D2D, ApplyIconPalettes
+fun 0x8004F71, DebugPutStr
 fun 0x80053A1, GetLang
 fun 0x80053A5, SetLang
 fun 0x80053B1, ResetText
@@ -286,12 +304,16 @@ fun 0x800FB89, EvtCmd_ClearMenuOverrides
 fun 0x800FB95, EvtCmd_MenuOverrideHide
 fun 0x800FBAD, EvtCmd_MenuOverrideDisable
 fun 0x800FBD9, EvtCmd_MenuOverrideEnable
+fun 0x8012B01, StartGame
 fun 0x8012B39, GetGameControlProc
 fun 0x8012B49, SetNextGameAction
 fun 0x8012B5D, SetNextChapter
 fun 0x8012C61, GetMsg
 fun 0x8012C9D, GetMsgTo
 fun 0x8013169, Decompress
+fun 0x8013AC9, StartPalFadeToBlack
+fun 0x8013B01, StartPalFade
+fun 0x8013C5D, SetBlackPal
 fun 0x8013EB9, FadeExists
 fun 0x8013F01, StartFadeToBlack
 fun 0x8013F1D, StartFadeFromBlack
@@ -303,6 +325,7 @@ fun 0x8013FE1, StartMidLockingFadeToBlack
 fun 0x8013FF1, StartSlowLockingFadeToBlack
 fun 0x8014011, StartMidLockingFadeFromBlack
 fun 0x8014495, StartTemporaryLock
+fun 0x801524D, OnVBlank
 fun 0x8015329, GetGameLock
 fun 0x8015591, ApplySystemObjectsGraphics
 fun 0x80155CD, ApplySystemGraphics
@@ -323,6 +346,9 @@ fun 0x801725D, GetItemKind
 fun 0x8017295, GetItemUses
 fun 0x80172E1, GetItemMight
 fun 0x8017509, ClearUnit
+fun 0x80175E9, SetUnitStatus
+fun 0x8017689, UnitRemoveInvalidItems
+fun 0x8017C65, UnitCheckStatOverflow
 fun 0x8017D35, GetUnitByPid
 fun 0x8017EB9, UnitChangeFaction
 fun 0x8017F29, UnitSyncMovement
@@ -362,6 +388,7 @@ fun 0x8026575, HideUnitSprite
 fun 0x8026599, ShowUnitSprite
 fun 0x80281C9, BattleGenerateSimulationInternal
 fun 0x8028299, BattleGenerateRealInternal
+fun 0x8028381, BattleApplyGameStateUpdates
 fun 0x80283A5, BattleGenerateSimulation
 fun 0x80283DD, BattleGenerateReal
 fun 0x80283F1, BattleGenerateBallistaSimulation
@@ -388,6 +415,7 @@ fun 0x802A315, UpdateObstacleFromBattle
 fun 0x802A3B1, BeginBattleAnimations
 fun 0x802A4B5, BattleInitItemEffect
 fun 0x802A561, BattleInitItemEffectTarget
+fun 0x802A66D, GetOffensiveStaffAccuracy
 fun 0x802AB91, BattleHitAdvance
 fun 0x802ABA1, BattleHitTerminate
 fun 0x802BB11, RemoveTrap
@@ -398,6 +426,10 @@ fun 0x802BDD5, AddMapChangeTrap
 fun 0x802BDE9, RemoveMapChangeTrap
 fun 0x802BE41, UpdateRoofedUnits
 fun 0x802C319, GetBallistaTrapAt
+fun 0x802C42D, GetRescueStaffTargetPosition
+fun 0x802C655, DoItemRescueStaffAction
+fun 0x802C76D, DoItemAttackStaffAction
+fun 0x802D259, ApplyStatusChange
 fun 0x802D3B5, LockBmDisplay
 fun 0x802D3E9, UnlockBmDisplay
 fun 0x802D425, AllocWeatherParticles
@@ -453,6 +485,7 @@ fun 0x807A3E9, IsTutorialDisabled
 fun 0x807EE3D, GetLynModeDeathFlag
 fun 0x807EE4D, SetLynModeDeathFlag
 fun 0x80868B9, CountUnitsByFaction
+fun 0x80A009D, PidStatsAddExpGained
 fun 0x80BE595, PlaySong
 fun 0x80BE72D, m4aMPlayFadeOut
 fun 0x80BE75D, m4aMPlayFadeIn
@@ -460,8 +493,11 @@ fun 0x80BE785, m4aMPlayImmInit
 fun 0x80BEDAD, m4aMPlayStop
 fun 0x80BF53D, m4aMPlayVolumeControl
 fun 0x80BFA0D, CpuSetFast
+fun 0x80BFA11, CpuSet
 fun 0x80BFC51, _call_via_r1
 fun 0x80BFC55, _call_via_r2
+fun 0x80BFC59, _call_via_r3
+fun 0x80BFC5D, _call_via_r4
 fun 0x80BFC89, __divsi3
 fun 0x80BFD1D, __div0
 fun 0x80BFD21, __modsi3
@@ -479,6 +515,7 @@ dat 0x20027DC, gWeatherEffect
 dat 0x2002ADC, gWeatherGradient
 dat 0x2022860, gPal
 dat 0x2023C60, gBg2Tm
+dat 0x2024C70, MainFunc
 dat 0x2028D70, gActiveFont
 dat 0x2028D78, gSpecialCharStList
 dat 0x202A5B4, gCurrentMsgBuf
@@ -501,7 +538,10 @@ dat 0x203A470, gBattleUnitB
 dat 0x203A50C, gBattleHitIt
 dat 0x203A518, gTraps
 dat 0x203A85C, gAction
+dat 0x3000000, gRandStA
+dat 0x3000008, gRandStB
 dat 0x3000010, gGameTime
+dat 0x3002870, gDispIo
 dat 0x3003940, DecodeStringFunc
 dat 0x3004690, gActiveUnit
 dat 0x8194594, Pal_UnitSprites
@@ -526,11 +566,14 @@ dat 0x8B91A50, ProcScr_EventCursor
 dat 0x8B91A78, ProcScr_EventWeatherChangeWithFade
 dat 0x8B91DC4, ProcScr_GiveItem
 dat 0x8B924BC, ProcScr_GameControl
+dat 0x8B92914, ProcScr_PalFade
 dat 0x8B9292C, ProcScr_FadeToBlack
 dat 0x8B9294C, ProcScr_FadeFromBlack
 dat 0x8B9296C, ProcScr_FadeToWhite
 dat 0x8B9298C, ProcScr_FadeFromWhite
 dat 0x8B929DC, ProcScr_TemporaryLock
+dat 0x8B92A28, Pal_AllBlack
+dat 0x8B92A48, Pal_AllWhite
 dat 0x8B92E38, ProcScr_CamMove
 dat 0x8B92EB0, UnitLut
 dat 0x8B932B4, gMapBaseTiles

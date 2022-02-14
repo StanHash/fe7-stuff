@@ -1,11 +1,11 @@
 
     // Set prologue weather
-    ORG $0C9A212
-    BYTE 5
+    // ORG $0C9A212
+    // BYTE 5
 
     // Set prologue objective
-    ORG $0C9A290
-    BYTE 5
+    // ORG $0C9A290
+    // BYTE 5
 
     ORG $0D00000
 
@@ -13,7 +13,11 @@
     #include "wizardry/anti-huffman.event"
     #include "wizardry/ai-fast-danger/ai-fast-danger.event"
     #include "wizardry/generic-face-fix/generic-face-fix.event"
-    #include "wizardry/flames-recolor/flames-recolor.event"
-    #include "wizardry/realtime-score/realtime-score.event"
+    // #include "wizardry/fast-stuff/fast-stuff.event"
+    //#include "wizardry/flames-recolor/flames-recolor.event"
+    //#include "wizardry/realtime-score/realtime-score.event"
+    // #include "wizardry/disable-minimap/disable-minimap.event"
+    // #include "wizardry/status-immune-bosses/status-immune-bosses.event"
+    // #include "wizardry/bloodlines-autocursor-fix/bloodlines-autocursor-fix.event"
 
     ASSERT $0D90000 - CURRENTOFFSET

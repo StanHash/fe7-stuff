@@ -41,8 +41,6 @@ struct BmSt
 
 struct PlaySt
 {
-    // TODO: this is fe6 layout. update.
-
     /* 00 */ u32 saved_time;
     /* 04 */ u32 chapter_start_time;
     /* 08 */ int gold;
@@ -60,7 +58,9 @@ struct PlaySt
     /* 1A */ u8 last_sort_id;
     /* 1B */ u8 unk_1B;
 
-    /* 1C */ // option bits
+    /* 1C */ u8 pad_1C[0x40 - 0x1C];
+
+    /* 40 */ // option bits
     u32 unk_1C_1:1;
     u32 unk_1C_2:1;
     u32 unk_1C_3:2;

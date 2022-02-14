@@ -1,0 +1,15 @@
+// optimizes some common functions
+// hack by stan
+
+PUSH
+
+    // GetUnit (31 -> 27 cycles)
+    ORG $018D0C
+
+    SHORT $4903 // ldr r1, =UnitLut
+    SHORT $0600 // lsl r0, #24
+    SHORT $0D80 // lsr r0, #22
+    SHORT $5808 // ldr r0, [r1, r0]
+    SHORT $4770 // bx  lr
+
+POP

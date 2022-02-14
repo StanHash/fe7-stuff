@@ -5,25 +5,27 @@
 
 enum
 {
-    US_HIDDEN       = (1 << 0),
-    US_TURN_ENDED   = (1 << 1),
-    US_DEAD         = (1 << 2),
-    US_NOT_DEPLOYED = (1 << 3),
-    US_RESCUING     = (1 << 4),
-    US_RESCUED      = (1 << 5),
-    US_HAS_MOVED    = (1 << 6), // Bad name?
-    US_UNDER_A_ROOF = (1 << 7),
-    US_BIT8         = (1 << 8), // has been seen?
-    US_BIT9         = (1 << 9), // hidden by fog?
-    US_HAS_MOVED_AI = (1 << 10),
+    UNIT_FLAG_HIDDEN       = (1 << 0),
+    UNIT_FLAG_TURN_ENDED   = (1 << 1),
+    UNIT_FLAG_DEAD         = (1 << 2),
+    UNIT_FLAG_NOT_DEPLOYED = (1 << 3),
+    UNIT_FLAG_RESCUING     = (1 << 4),
+    UNIT_FLAG_RESCUED      = (1 << 5),
+    UNIT_FLAG_HAS_MOVED    = (1 << 6), // Bad name?
+    UNIT_FLAG_UNDER_A_ROOF = (1 << 7),
+    UNIT_FLAG_BIT8         = (1 << 8), // has been seen?
+    UNIT_FLAG_BIT9         = (1 << 9), // hidden by fog?
+    UNIT_FLAG_HAS_MOVED_AI = (1 << 10),
 
-    US_BIT12        = 0x1000, // unk, checked by vanilla AiFillDangerMap
+    UNIT_FLAG_BIT12        = 0x1000, // unk, checked by vanilla AiFillDangerMap
 
-    US_SOLOANIM_1   = (1 << 14),
-    US_SOLOANIM_2   = (1 << 15),
+    UNIT_FLAG_SOLOANIM_1   = (1 << 14),
+    UNIT_FLAG_SOLOANIM_2   = (1 << 15),
+
+    UNIT_FLAG_AWAY         = (1 << 16),
 
     // Helpers
-    US_UNAVAILABLE = (US_DEAD | US_NOT_DEPLOYED),
+    UNIT_FLAG_UNAVAILABLE = (UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED),
 };
 
 struct PInfo

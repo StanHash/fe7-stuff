@@ -1,0 +1,18 @@
+// autocursor fix rewrite for bloodlines
+// hack by stan
+
+// the previous fix caused issues because it was so close to the spell assoc table
+
+#include "Extensions/Hack Installation.txt"
+
+PUSH
+
+    // replace GetPlayerInitialCursorPosition
+    ORG $01D64C
+
+    jumpToHack(NuggetPlayerInitialCursorPosition)
+    ASSERT $01D654 - CURRENTOFFSET 
+
+POP
+
+#include "src/bloodlines-autocursor-fix.lyn.event"

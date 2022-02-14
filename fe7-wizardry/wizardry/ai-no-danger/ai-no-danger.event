@@ -1,0 +1,10 @@
+// removed ai danger map generation
+// hack by stan
+
+PUSH
+
+    // replace single call to AiFillDangerMap
+    ORG $0393D8
+    WORD $46C046C0
+
+POP
