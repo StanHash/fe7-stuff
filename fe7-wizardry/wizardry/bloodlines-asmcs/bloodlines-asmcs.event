@@ -1,0 +1,8 @@
+// some asmcs for bloodlines
+// hack by stan
+
+ALIGN 4
+lBaylorPid:
+WORD 0x0B // baylor's character id (aka pid)
+
+#include "src/bl-asmc-baylor.lyn.event"

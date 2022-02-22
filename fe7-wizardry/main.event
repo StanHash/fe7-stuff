@@ -18,6 +18,7 @@
     //#include "wizardry/realtime-score/realtime-score.event"
     // #include "wizardry/disable-minimap/disable-minimap.event"
     // #include "wizardry/status-immune-bosses/status-immune-bosses.event"
-    // #include "wizardry/bloodlines-autocursor-fix/bloodlines-autocursor-fix.event"
+    #include "wizardry/player-leader-fix/player-leader-fix.event"
+    #include "wizardry/bloodlines-asmcs/bloodlines-asmcs.event"
 
     ASSERT $0D90000 - CURRENTOFFSET

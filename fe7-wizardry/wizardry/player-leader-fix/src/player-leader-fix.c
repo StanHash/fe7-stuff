@@ -2,15 +2,15 @@
 #include "unit.h"
 
 extern struct PlaySt gPlaySt;
-extern struct Unit* GetUnit(int id);
+extern struct Unit * GetUnit(int id);
 
-static struct Unit* GetFirstGoodUnit(void)
+static struct Unit * GetFirstGoodPlayerUnit(void)
 {
     int i;
 
     for (i = 1; i < 0x40; i++)
     {
-        struct Unit* unit = GetUnit(i);
+        struct Unit * unit = GetUnit(i);
 
         if (unit == NULL)
             continue;
@@ -30,11 +30,16 @@ static struct Unit* GetFirstGoodUnit(void)
     return GetUnit(1);
 }
 
-void NuggetPlayerInitialCursorPosition(int* x_out, int* y_out)
+struct Unit * NuggetStatusSceenLeaderUnit(void)
+{
+    return GetFirstGoodPlayerUnit();
+}
+
+void NuggetPlayerInitialCursorPosition(int * x_out, int * y_out)
 {
     if (gPlaySt.turn == 1)
     {
-        struct Unit* unit = GetFirstGoodUnit();
+        struct Unit * unit = GetFirstGoodPlayerUnit();
 
         gPlaySt.x_cursor = unit->x;
         gPlaySt.y_cursor = unit->y;
@@ -42,7 +47,7 @@ void NuggetPlayerInitialCursorPosition(int* x_out, int* y_out)
 
     if (!gPlaySt.config_no_auto_cursor)
     {
-        struct Unit* unit = GetFirstGoodUnit();
+        struct Unit * unit = GetFirstGoodPlayerUnit();
 
         *x_out = unit->x;
         *y_out = unit->y;
