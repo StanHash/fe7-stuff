@@ -1,0 +1,17 @@
+// fixes units with ballista access + canto being allowed to attack with ballistae after canto (causing a crash when attempted)
+// original hack by Contro, rewritten by stan
+
+// this simply adds a check for the canto flag in the attack (ballista) usability check
+
+#include "Extensions/Hack Installation.txt"
+
+ALIGN 4
+GetUnitAttackBallistaCommandAvailabilityHook:
+    #incbin "src/ballista-canto-fix.dmp"
+
+PUSH
+
+    ORG $0235F8
+    jumpToHack(GetUnitAttackBallistaCommandAvailabilityHook)
+
+POP

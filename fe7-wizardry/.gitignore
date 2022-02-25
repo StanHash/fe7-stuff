@@ -4,3 +4,4 @@
 *.asm
 *.o
 *.lyn.event
+*.dmp

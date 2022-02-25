@@ -13,12 +13,16 @@
     #include "wizardry/anti-huffman.event"
     #include "wizardry/ai-fast-danger/ai-fast-danger.event"
     #include "wizardry/generic-face-fix/generic-face-fix.event"
-    // #include "wizardry/fast-stuff/fast-stuff.event"
-    //#include "wizardry/flames-recolor/flames-recolor.event"
-    //#include "wizardry/realtime-score/realtime-score.event"
+    #include "wizardry/player-leader-fix/player-leader-fix.event"
+    #include "wizardry/fast-stuff/fast-stuff.event"
+
+    // #include "wizardry/flames-recolor/flames-recolor.event"
+    // #include "wizardry/realtime-score/realtime-score.event"
     // #include "wizardry/disable-minimap/disable-minimap.event"
     // #include "wizardry/status-immune-bosses/status-immune-bosses.event"
-    #include "wizardry/player-leader-fix/player-leader-fix.event"
-    #include "wizardry/bloodlines-asmcs/bloodlines-asmcs.event"
+    // #include "wizardry/bloodlines-asmcs/bloodlines-asmcs.event"
+    // #include "wizardry/stat-bar-cap/stat-bar-cap.event"
+    // #include "wizardry/ballista-canto-fix/ballista-canto-fix.event"
+
 
     ASSERT $0D90000 - CURRENTOFFSET

@@ -1,0 +1,30 @@
+// modify the stat screen stat bar cap
+// hack by ??? (feb patch), event installer by stan
+
+// normally, stat bar display breaks a little if stats exceed 30
+// this allows you to configure the max
+
+// change the max value here, OR define NewStatBarMaxDisplayed it beforehand
+#ifndef NewStatBarMaxDisplayed
+#define NewStatBarMaxDisplayed 40
+#endif
+
+PUSH
+    // all in DrawStatWithBar (fe7u:0807FD28)
+
+    ORG $07FD6A // if (total > 30)
+    BYTE NewStatBarMaxDisplayed
+
+    ORG $07FD6E // total = 30;
+    BYTE NewStatBarMaxDisplayed
+
+    ORG $07FD9E // max * 41 / 30
+    BYTE NewStatBarMaxDisplayed
+
+    ORG $07FDAE // base * 41 / 30
+    BYTE NewStatBarMaxDisplayed
+
+    ORG $07FDC0 // diff * 41 / 30
+    BYTE NewStatBarMaxDisplayed
+
+POP
