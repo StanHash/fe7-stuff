@@ -9,8 +9,9 @@
 
     ORG $0D00000
 
-    #include "wizardry/fix-proc-names.event"
     #include "wizardry/anti-huffman.event"
+    #include "wizardry/fix-proc-names.event"
+    #include "wizardry/fix-event-commands.event"
     #include "wizardry/ai-fast-danger/ai-fast-danger.event"
     #include "wizardry/generic-face-fix/generic-face-fix.event"
     #include "wizardry/player-leader-fix/player-leader-fix.event"

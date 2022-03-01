@@ -1,0 +1,18 @@
+// fixes behavior of some broken event script commands
+// hack by stan
+
+PUSH
+
+    // fix TalkSetFunc to be usable
+    ORG $00BA50 // in EvtCmd_TalkSetFunc
+    SHORT $6840 // add r0, #4 -> ldr r0, [r0, #4]
+
+    // fix GotoIfyTalkYes to not be a duplicate GotoIfnTalkYes
+    ORG $00D81F // in EvtCmd_GotoIfyTalkYes
+    BYTE $D0 // bne -> beq
+
+    // fix EnqueueEvent to be usable
+    ORG $00EC34 // in EvtCmd_EnqueueEvent
+    SHORT $6840 // add r0, #4 -> ldr r0, [r0, #4]
+
+POP

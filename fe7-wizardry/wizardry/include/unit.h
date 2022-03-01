@@ -5,27 +5,91 @@
 
 enum
 {
+    UNIT_ATTR_MOUNTED                = (1 << 0),
+    UNIT_ATTR_CANTO                  = (1 << 1),
+    UNIT_ATTR_STEAL                  = (1 << 2),
+    UNIT_ATTR_THIEF                  = (1 << 3),
+    UNIT_ATTR_DANCE                  = (1 << 4),
+    UNIT_ATTR_PLAY                   = (1 << 5),
+    UNIT_ATTR_CRIT_BONUS             = (1 << 6),
+    UNIT_ATTR_BALLISTA               = (1 << 7),
+    UNIT_ATTR_PROMOTED               = (1 << 8),
+    UNIT_ATTR_SUPPLY                 = (1 << 9),
+    UNIT_ATTR_HORSE                  = (1 << 10),
+    UNIT_ATTR_WYVERN                 = (1 << 11),
+    UNIT_ATTR_PEGASUS                = (1 << 12),
+    UNIT_ATTR_LORD                   = (1 << 13),
+    UNIT_ATTR_FEMALE                 = (1 << 14),
+    UNIT_ATTR_BOSS                   = (1 << 15),
+    UNIT_ATTR_LOCK_ROY               = (1 << 16),
+    UNIT_ATTR_LOCK_MYRM              = (1 << 17),
+    UNIT_ATTR_MONSTER                = (1 << 18),
+    UNIT_ATTR_MORPH                  = (1 << 19),
+    UNIT_ATTR_UNSELECTABLE           = (1 << 20),
+    UNIT_ATTR_TRIANGLE_ATTACK_PEGASI = (1 << 21),
+    UNIT_ATTR_TRIANGLE_ATTACK_ARMORS = (1 << 22),
+    UNIT_ATTR_ALT_PINFO              = (1 << 23),
+    UNIT_ATTR_FINAL_BOSS             = (1 << 24),
+    UNIT_ATTR_ASSASSIN               = (1 << 25),
+    UNIT_ATTR_MAGIC_SEAL             = (1 << 26),
+    UNIT_ATTR_DROPS_ITEM             = (1 << 27),
+    UNIT_ATTR_LOCK_ELIWOOD           = (1 << 28),
+    UNIT_ATTR_LOCK_HECTOR            = (1 << 29),
+    UNIT_ATTR_LOCK_LYN               = (1 << 30),
+    UNIT_ATTR_LOCK_ATHOS             = (1 << 31),
+
+    // Helpers
+    UNIT_ATTRS_REFRESH = UNIT_ATTR_DANCE | UNIT_ATTR_PLAY,
+    UNIT_ATTRS_FLYING = UNIT_ATTR_WYVERN | UNIT_ATTR_PEGASUS,
+    UNIT_ATTRS_TRIANGLE_ATTACK_ANY = UNIT_ATTR_TRIANGLE_ATTACK_PEGASI | UNIT_ATTR_TRIANGLE_ATTACK_ARMORS,
+};
+
+enum
+{
+    UNIT_FACTION_BLUE   = 0x00, // player units
+    UNIT_FACTION_GREEN  = 0x40, // ally npc units
+    UNIT_FACTION_RED    = 0x80, // enemy units
+    UNIT_FACTION_PURPLE = 0xC0, // link arena 4th team
+};
+
+enum
+{
     UNIT_FLAG_HIDDEN       = (1 << 0),
     UNIT_FLAG_TURN_ENDED   = (1 << 1),
     UNIT_FLAG_DEAD         = (1 << 2),
     UNIT_FLAG_NOT_DEPLOYED = (1 << 3),
     UNIT_FLAG_RESCUING     = (1 << 4),
     UNIT_FLAG_RESCUED      = (1 << 5),
-    UNIT_FLAG_HAS_MOVED    = (1 << 6), // Bad name?
+    UNIT_FLAG_HAS_MOVED    = (1 << 6),
     UNIT_FLAG_UNDER_A_ROOF = (1 << 7),
-    UNIT_FLAG_BIT8         = (1 << 8), // has been seen?
-    UNIT_FLAG_BIT9         = (1 << 9), // hidden by fog?
+    UNIT_FLAG_FOG_SEEN     = (1 << 8),
+    UNIT_FLAG_FOG_HIDDEN   = (1 << 9),
     UNIT_FLAG_HAS_MOVED_AI = (1 << 10),
-
-    UNIT_FLAG_BIT12        = 0x1000, // unk, checked by vanilla AiFillDangerMap
-
+    UNIT_FLAG_IN_BALLISTA  = (1 << 11),
+    UNIT_FLAG_BIT12        = (1 << 12), // unk, checked by vanilla AiFillDangerMap. In fe8: UNIT_FLAG_DROPS_ITEM
+    UNIT_FLAG_GROWTH_BOOST = (1 << 13),
     UNIT_FLAG_SOLOANIM_1   = (1 << 14),
     UNIT_FLAG_SOLOANIM_2   = (1 << 15),
-
     UNIT_FLAG_AWAY         = (1 << 16),
+    UNIT_FLAG_ARENA_A      = (1 << 17),
+    UNIT_FLAG_ARENA_B      = (1 << 18),
+    UNIT_FLAG_ARENA_C      = (1 << 19),
 
     // Helpers
-    UNIT_FLAG_UNAVAILABLE = (UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED),
+    UNIT_FLAGS_UNAVAILABLE = UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED | UNIT_FLAG_AWAY,
+};
+
+enum
+{
+    UNIT_STATUS_NONE     = 0,
+    UNIT_STATUS_POISON   = 1,
+    UNIT_STATUS_SLEEP    = 2,
+    UNIT_STATUS_SILENCED = 3,
+    UNIT_STATUS_BERSERK  = 4,
+    UNIT_STATUS_ATTACK   = 5,
+    UNIT_STATUS_DEFENSE  = 6,
+    UNIT_STATUS_CRIT     = 7,
+    UNIT_STATUS_AVOID    = 8,
 };
 
 struct PInfo
@@ -61,11 +125,13 @@ struct PInfo
 
     /* 23 */ u8 banim_pal_a;
     /* 24 */ u8 banim_pal_b;
-    /* 25 */ // pad
+    /* 25 */ u8 banim_info_override[2];
+
+    /* 27 */ u8 pad_25[0x28 - 0x27];
 
     /* 28 */ u32 attributes;
 
-    /* 2C */ struct SupportInfo const* support_info;
+    /* 2C */ struct SupportInfo const * support_info;
 };
 
 struct JInfo
@@ -105,31 +171,37 @@ struct JInfo
     /* 1F */ i8 growth_def;
     /* 20 */ i8 growth_res;
     /* 21 */ i8 growth_lck;
-    /* 22 */ // pad
 
-    /* 24 */ u32 attributes;
+    /* 22 */ u8 promotion_hp;
+    /* 23 */ u8 promotion_pow;
+    /* 24 */ u8 promotion_skl;
+    /* 25 */ u8 promotion_spd;
+    /* 26 */ u8 promotion_def;
+    /* 27 */ u8 promotion_res;
 
-    /* 28 */ u8 wexp[8];
+    /* 28 */ u32 attributes;
 
-    /* 30 */ void const* banim_info;
+    /* 2C */ u8 wexp[8];
 
-    /* 34 */ i8 const* mov_table;
-    /* 38 */ i8 const* avo_terrain_table;
-    /* 3C */ i8 const* def_terrain_table;
-    /* 40 */ i8 const* res_terrain_table;
+    /* 34 */ void const * banim_info;
 
-    /* 44 */ void const* unk_44;
+    /* 38 */ i8 const * mov_table[3];
+    /* 44 */ i8 const * avo_terrain_table;
+    /* 48 */ i8 const * def_terrain_table;
+    /* 4C */ i8 const * res_terrain_table;
+
+    /* 50 */ void const * unk_50;
 };
 
 struct Unit
 {
-    /* 00 */ struct PInfo const* pinfo;
-    /* 04 */ struct JInfo const* jinfo;
+    /* 00 */ struct PInfo const * pinfo;
+    /* 04 */ struct JInfo const * jinfo;
     /* 08 */ i8 level;
     /* 09 */ u8 exp;
     /* 0A */ u8 ai_flags;
     /* 0B */ i8 id;
-    /* 0C */ u32 state;
+    /* 0C */ u32 flags;
     /* 10 */ i8 x;
     /* 11 */ i8 y;
     /* 12 */ i8 max_hp;
@@ -152,8 +224,8 @@ struct Unit
     /* 31 */ u8 barrier : 4;
     /* 32 */ u8 supports[7];
     /* 39 */ u8 support_bits;
-    /* 3A */ // pad?
-    /* 3C */ struct UnitSprite* map_sprite;
+    /* 3A */ u8 pad_3A[0x3C - 0x3A];
+    /* 3C */ struct UnitSprite * map_sprite;
     /* 40 */ u16 ai_config;
     /* 42 */ u8 ai_a;
     /* 43 */ u8 ai_a_pc;
@@ -163,3 +235,19 @@ struct Unit
     /* 47 */ // pad?
     /* 48 */ // end
 };
+
+struct UnitInfo
+{
+    /* 00 */ u8 pid;
+    /* 01 */ u8 jid;
+    /* 02 */ u8 pid_lead;
+    /* 03 */ u8 autolevel : 1;
+    /* 03 */ u8 faction_id : 2;
+    /* 03 */ u8 level : 5;
+    /* 04 */ u8 x_load, y_load;
+    /* 06 */ u8 x_move, y_move;
+    /* 08 */ u8 item[4];
+    /* 0C */ u8 ai[4];
+};
+
+#define UNIT_ATTRIBUTES(unit) ((unit)->pinfo->attributes | ((unit)->jinfo->attributes))

@@ -7,7 +7,9 @@ $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
 include $(DEVKITARM)/base_tools
 
-EA_DIR := tools/EventAssembler
+TOOLS_DIR := tools
+
+EA_DIR := $(TOOLS_DIR)/EventAssembler
 
 EA                := $(EA_DIR)/ColorzCore
 EADEP             := $(EA_DIR)/ea-dep
@@ -17,9 +19,9 @@ PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
 COMPRESS          := $(EA_DIR)/Tools/compress
 LYN               := $(EA_DIR)/Tools/lyn
 
-FE7_GBA := tools/fe7-us.gba
-FE7_REF := tools/fe7-us.s
-FE7_SYM := tools/fe7-us.sym
+FE7_GBA := $(TOOLS_DIR)/fe7-us.gba
+FE7_REF := $(TOOLS_DIR)/fe7-us.s
+FE7_SYM := $(TOOLS_DIR)/fe7-us.sym
 
 # ===============
 # = MAIN TARGET =

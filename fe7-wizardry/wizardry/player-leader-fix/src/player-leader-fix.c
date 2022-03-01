@@ -18,7 +18,7 @@ static struct Unit * GetFirstGoodPlayerUnit(void)
         if (unit->pinfo == NULL)
             continue;
 
-        if (unit->state & (UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED | UNIT_FLAG_AWAY))
+        if (unit->flags & UNIT_FLAGS_UNAVAILABLE)
             continue;
 
         if (unit->x < 0)

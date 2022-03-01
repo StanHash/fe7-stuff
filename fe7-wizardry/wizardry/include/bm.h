@@ -10,9 +10,9 @@ struct BmSt
     /* 02 */ i8 lock_display;
     /* 03 */ u8 pad_03;
     /* 04 */ u8 flags;
-    /* 05 */ // pad
+    /* 05 */ u8 pad_05;
     /* 06 */ u16 main_loop_end_scanline;
-    /* 08 */ int pad_08;
+    /* 08 */ u32 pad_08;
     /* 0C */ struct Vec2 camera;
     /* 10 */ struct Vec2 camera_previous;
     /* 14 */ struct Vec2 cursor;
@@ -54,31 +54,31 @@ struct PlaySt
     /* 15 */ u8 weather;
     /* 16 */ u16 support_gain;
     /* 18 */ u8 playthrough_id;
-    /* 19 */ u8 ending_id:4;
+    /* 19 */ u8 ending_id : 4;
     /* 1A */ u8 last_sort_id;
     /* 1B */ u8 unk_1B;
 
     /* 1C */ u8 pad_1C[0x40 - 0x1C];
 
     /* 40 */ // option bits
-    u32 unk_1C_1:1;
-    u32 unk_1C_2:1;
-    u32 unk_1C_3:2;
-    u32 config_no_auto_cursor:1;
-    u32 config_talk_speed:2;
-    u32 config_walk_speed:1;
-    u32 config_bgm_disable:1;
-    u32 config_se_disable:1;
-    u32 config_window_color:2;
-    u32 unk_1D_5:1;
-    u32 unk_1D_6:1;
-    u32 config_no_auto_end_turn:1;
-    u32 config_no_subtitle_help:1;
-    u32 config_battle_anim:2;
-    u32 config_battle_preview_kind:2;
-    u32 unk_1E_5:1;
-    u32 unk_1E_6:1;
-    u32 debug_control_red:2;
-    u32 debug_control_green:2;
-    u32 unk_1F_3:6;
+    u32 unk_40_1 : 1;
+    u32 unk_40_2 : 1;
+    u32 unk_40_3 : 2;
+    u32 config_no_auto_cursor : 1;
+    u32 config_talk_speed : 2;
+    u32 config_walk_speed : 1;
+    u32 config_bgm_disable : 1;
+    u32 config_se_disable : 1;
+    u32 config_window_color : 2;
+    u32 unk_41_5 : 1;
+    u32 unk_41_6 : 1;
+    u32 config_no_auto_end_turn : 1;
+    u32 config_no_subtitle_help : 1;
+    u32 config_battle_anim : 2;
+    u32 config_battle_preview_kind : 2;
+    u32 unk_42_5 : 1;
+    u32 unk_42_6 : 1;
+    u32 debug_control_red : 2;
+    u32 debug_control_green : 2;
+    u32 unk_43_3 : 6;
 };

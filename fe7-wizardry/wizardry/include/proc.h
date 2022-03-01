@@ -3,14 +3,14 @@
 #include "types.h"
 #include "fwd.h"
 
-typedef void* ProcPtr;
-typedef void(*ProcFunc)(ProcPtr proc);
+typedef void * ProcPtr;
+typedef void(* ProcFunc)(ProcPtr proc);
 
 struct ProcScr
 {
     short cmd;
     short imm;
-    void const* ptr;
+    void const * ptr;
 };
 
 enum
@@ -44,7 +44,7 @@ enum
 };
 
 #define PROC_END                          { PROC_CMD_END, 0, 0 }
-#define PROC_NAME(nameStr)                { PROC_CMD_NAME, 0, (nameStr) }
+#define PROC_NAME(name_str)               { PROC_CMD_NAME, 0, (name_str) }
 #define PROC_CALL(func)                   { PROC_CMD_CALL, 0, (func) }
 #define PROC_REPEAT(func)                 { PROC_CMD_REPEAT, 0, (func) }
 #define PROC_ONEND(func)                  { PROC_CMD_ONEND, 0, (func) }
@@ -70,20 +70,20 @@ enum
 #define PROC_CALL_ARG(func, arg)          { PROC_CMD_CALL_ARG, (arg), (func) }
 #define PROC_19                           { PROC_CMD_19, 0, 0 }
 
-#define PROC_HEADER                       \
-    struct ProcScr const* proc_script;    \
-    struct ProcScr const* proc_script_pc; \
-    ProcFunc proc_end_func;               \
-    ProcFunc proc_repeat_func;            \
-    char const* proc_name;                \
-    ProcPtr proc_parent;                  \
-    ProcPtr proc_child;                   \
-    ProcPtr proc_next;                    \
-    ProcPtr proc_prev;                    \
-    i16 proc_sleep_clock;                 \
-    u8 proc_mark;                         \
-    u8 proc_flags;                        \
-    u8 proc_lock_cnt
+#define PROC_HEADER                                 \
+    /* 00 */ struct ProcScr const * proc_script;    \
+    /* 04 */ struct ProcScr const * proc_script_pc; \
+    /* 08 */ ProcFunc proc_end_func;                \
+    /* 0C */ ProcFunc proc_repeat_func;             \
+    /* 10 */ char const * proc_name;                \
+    /* 14 */ ProcPtr proc_parent;                   \
+    /* 18 */ ProcPtr proc_child;                    \
+    /* 1C */ ProcPtr proc_next;                     \
+    /* 20 */ ProcPtr proc_prev;                     \
+    /* 24 */ i16 proc_sleep_clock;                  \
+    /* 26 */ u8 proc_mark;                          \
+    /* 27 */ u8 proc_flags;                         \
+    /* 28 */ u8 proc_lock_cnt
 
 #define PROC_TREE_VSYNC ((ProcPtr) 0)
 #define PROC_TREE_1     ((ProcPtr) 1)

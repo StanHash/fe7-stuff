@@ -1,9 +1,6 @@
+#include "attr.h"
 #include "types.h"
 #include "unit.h"
-
-#define OPTIMIZE(o) __attribute__((optimize(o)))
-#define CONSTFUNC __attribute__((const))
-#define SHORTCALL __attribute__((short_call))
 
 int AreUnitIdsAllied(int uid_a, int uid_b) SHORTCALL CONSTFUNC;
 int CanUnitUseWeapon(struct Unit* unit, int item) SHORTCALL CONSTFUNC;
@@ -39,7 +36,7 @@ void NuAiFillDangerMap(void)
         if (unit->pinfo == NULL)
             continue;
 
-        if (unit->state & (UNIT_FLAG_HIDDEN | UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED | UNIT_FLAG_BIT12))
+        if (unit->flags & (UNIT_FLAG_HIDDEN | UNIT_FLAG_DEAD | UNIT_FLAG_NOT_DEPLOYED | UNIT_FLAG_BIT12))
             continue;
 
         if (AreUnitIdsAllied(active_unit_id, (u8) unit->id))

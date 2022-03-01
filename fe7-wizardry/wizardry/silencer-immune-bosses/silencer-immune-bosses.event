@@ -1,0 +1,13 @@
+// makes units with the boss attribute immune to the silencer ability
+// hack by stan
+
+// bosses already had a reduced chance of being silenced (25% rather than 50%)
+// this reduces that chance down to 0%
+// this hack is so simple it's not even funny
+
+PUSH
+
+    ORG $028E5A
+    BYTE 0 // 25% -> 0%
+
+POP

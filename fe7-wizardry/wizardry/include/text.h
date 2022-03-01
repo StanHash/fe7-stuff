@@ -5,9 +5,10 @@
 
 struct Glyph
 {
-    /* 00 */ struct Glyph const* next;
+    /* 00 */ struct Glyph const * next;
     /* 04 */ u8 sjis_byte_1;
     /* 05 */ u8 width;
+    /* 06 */ u8 pad_06[0x08 - 0x06];
     /* 08 */ u32 bitmap[16];
 };
 
@@ -24,10 +25,10 @@ struct Text
 
 struct Font
 {
-    /* 00 */ u8* draw_dest;
-    /* 04 */ struct Glyph const* const* glyphs;
-    /* 08 */ void(*draw_glyph)(struct Text* text, struct Glyph const* glyph);
-    /* 0C */ u8*(*get_draw_dest)(struct Text* text);
+    /* 00 */ u8 * draw_dest;
+    /* 04 */ struct Glyph const * const * glyphs;
+    /* 08 */ void (* draw_glyph)(struct Text * text, struct Glyph const * glyph);
+    /* 0C */ u8 * (* get_draw_dest)(struct Text * text);
     /* 10 */ u16 tileref;
     /* 12 */ u16 chr_counter;
     /* 14 */ u16 palid;
@@ -36,7 +37,7 @@ struct Font
 
 struct TextInitInfo
 {
-    /* 00 */ struct Text* text;
+    /* 00 */ struct Text * text;
     /* 04 */ u8 width;
 };
 
