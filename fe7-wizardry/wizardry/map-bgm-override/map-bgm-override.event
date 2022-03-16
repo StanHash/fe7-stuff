@@ -6,7 +6,7 @@
 // HOW TO (ASMC method):
 //  This hack provides two ASMCs: AsmcMapBgmOverrideDisable and AsmcMapBgmOverrideCycle
 //  AsmcMapBgmOverrideDisable disables and resets this hack's state
-//  AsmcMapBgmOverrideDisable enables the hack and cycles through a preset list of songs
+//  AsmcMapBgmOverrideCycle enables the hack and cycles through a preset list of songs
 //  You can edit the list of songs this cycles through by editing MapBgmOverrideCycleList below
 //  You may want to "ASMC 0x015F85" to apply changes immediately inside events
 //  (otherwise you would need to wait for the event/action to complete which might be undesirable)
