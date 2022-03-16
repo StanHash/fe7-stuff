@@ -1,0 +1,66 @@
+// Allows for conditional override of map bgm
+// hack by stan
+
+// this is a rewrite/redesign of an old Brendor hack made for Bloodlines
+
+// HOW TO (ASMC method):
+//  This hack provides two ASMCs: AsmcMapBgmOverrideDisable and AsmcMapBgmOverrideCycle
+//  AsmcMapBgmOverrideDisable disables and resets this hack's state
+//  AsmcMapBgmOverrideDisable enables the hack and cycles through a preset list of songs
+//  You can edit the list of songs this cycles through by editing MapBgmOverrideCycleList below
+//  You may want to "ASMC 0x015F85" to apply changes immediately inside events
+//  (otherwise you would need to wait for the event/action to complete which might be undesirable)
+
+// HOW TO (advanced ASM method):
+//  Enable the hack by setting the flag MapBgmOverrideEnableFlag
+//  You can then use it to override the map music with any song you want
+//  Simply write your song id to the halfword at MapBgmOverrideSongAddr
+//  You may want to call fe7u:08015F84 to apply changes immediately
+
+#ifndef MapBgmOverrideSongAddr
+// part of tact name, change this if you use tact name
+#define MapBgmOverrideSongAddr 0x0202BC20
+#endif
+
+#ifndef MapBgmOverrideEnableFlag
+// the last local flag (/!\ may not be saved by vanilla)
+#define MapBgmOverrideEnableFlag 99
+#endif
+
+#include "Extensions/Hack Installation.txt"
+
+#include "src/map-bgm-override-asmc.lyn.event"
+#include "src/map-bgm-override-hook.lyn.event"
+
+PUSH
+
+    ORG 0x015E9C
+    jumpToHack(MapBgmOverrideHook)
+    ASSERT 0x015EA4 - CURRENTOFFSET
+    ASSERT CURRENTOFFSET - 0x015EA4
+
+POP
+
+lMapBgmOverrideEnableFlag:
+    BYTE MapBgmOverrideEnableFlag
+
+ALIGN 4
+lMapBgmOverrideSongAddr:
+    WORD MapBgmOverrideSongAddr
+
+// this is the list you want to edit to change the songs the asmc will cycle through
+// note: do not put the same song twice in this or else it will kinda break
+
+ALIGN 2
+MapBgmOverrideCycleList:
+    SHORT 2
+    SHORT 3
+    SHORT 10
+    SHORT 20
+    SHORT 31
+    SHORT 32
+    SHORT 21
+    SHORT 66
+    SHORT 73
+    SHORT 74
+    SHORT (-1) // end

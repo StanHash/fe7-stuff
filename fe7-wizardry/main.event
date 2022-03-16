@@ -24,6 +24,8 @@
     // #include "wizardry/bloodlines-asmcs/bloodlines-asmcs.event"
     // #include "wizardry/stat-bar-cap/stat-bar-cap.event"
     // #include "wizardry/ballista-canto-fix/ballista-canto-fix.event"
+    // #include "wizardry/map-bgm-override/map-bgm-override.event"
 
-
+    // ASSERT CURRENTOFFSET >= $0D00000 && CURRENTOFFSET <= $0D90000
+    ASSERT CURRENTOFFSET - $0D00000
     ASSERT $0D90000 - CURRENTOFFSET
