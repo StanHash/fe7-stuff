@@ -23,8 +23,8 @@
 #endif
 
 #ifndef MapBgmOverrideEnableFlag
-// the last local flag (/!\ may not be saved by vanilla)
-#define MapBgmOverrideEnableFlag 99
+// the last local flag saved by vanilla
+#define MapBgmOverrideEnableFlag 47
 #endif
 
 #include "Extensions/Hack Installation.txt"
