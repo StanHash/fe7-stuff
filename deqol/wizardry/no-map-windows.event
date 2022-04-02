@@ -1,0 +1,22 @@
+// removes map windows (you know, the terrain/goal/unit windows)
+// hack by stan for fe7 deQoL
+
+PUSH
+
+    // skip making the terrain window
+    ORG 0x085BBC+1
+    BYTE $E0 // blt -> b
+
+    // skip making the goal window
+    ORG 0x085C1E+1
+    BYTE $E0 // bne -> b
+
+    // skip making the unit window (panel)
+    ORG 0x085C36+1
+    BYTE $E0 // bne -> b
+
+    // skip making the unit window (burst)
+    ORG 0x085C48+1
+    BYTE $E0 // bne -> b
+
+POP

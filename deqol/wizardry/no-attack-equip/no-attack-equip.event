@@ -1,0 +1,23 @@
+// removes the ability to equip a weapon before selecting an attack target
+// hack by stan for fe7 deQoL
+
+#include "Extensions/Hack Installation.txt"
+
+#include "src/no-attack-equip.lyn.event"
+
+PUSH
+
+    ORG 0x021A88 // in UnitAttackCommandEffect
+    BL(0x022858) // StartFightBallistaReview -> the function called when confirming ballista review
+
+    ORG 0x021AE4 // replace StartFightItemReview
+    jumpToHack(NuStartFightItemReview)
+
+    ORG 0xB95344 // update Unit Attack MenuEntInfo
+    POIN NuggetUnitAttackCommandAvailability
+
+    // go back to unit menu rather than fight review menu
+    ORG 0xB93E30 // in ProcScr_BackToFightItemReview
+    POIN 0x021715
+
+POP

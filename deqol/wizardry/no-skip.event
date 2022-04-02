@@ -1,0 +1,15 @@
+// prevents event and talk skipping
+// hack by stan for fe7 deQoL
+
+PUSH
+
+    ORG 0x008150+1 // in TalkSkipListener_OnIdle
+    BYTE $E0 // bne -> b
+
+    ORG 0x0081BA+1 // in TalkSkipListener_OnIdle
+    BYTE $E0 // bne -> b
+
+    ORG 0x00B1C4 // replace Event_IsSkipAllowed
+    SHORT $2000 $4770 // mov r0, 0 ; bx lr
+
+POP

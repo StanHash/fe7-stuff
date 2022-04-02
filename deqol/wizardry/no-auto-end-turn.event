@@ -1,0 +1,9 @@
+// removes the auto end turn feature
+// hack by stan for fe7 deQoL
+
+PUSH
+
+    ORG 0x01D3AC // replace PlayerPhase_HandleAutoEnd
+    SHORT $4770 // bx lr
+
+POP

@@ -1,0 +1,21 @@
+
+    ORG $0D00000
+
+    #include "wizardry/tutorial-disabler.event"
+
+    #include "wizardry/no-skip.event"
+    #include "wizardry/no-statscreen-quick-switch.event"
+    #include "wizardry/no-l-switch.event"
+    #include "wizardry/no-map-windows.event"
+    #include "wizardry/no-fight-preview.event"
+    #include "wizardry/no-attack-equip/no-attack-equip.event"
+    #include "wizardry/no-auto-end-turn.event"
+
+    #include "wizardry/mercy-print-speed.event"
+    #include "wizardry/minimal-options.event"
+
+    // scrapped
+    // #include "wizardry/slow-fast-cursor.event"
+
+    ASSERT CURRENTOFFSET - $0D00000
+    ASSERT $0D90000 - CURRENTOFFSET

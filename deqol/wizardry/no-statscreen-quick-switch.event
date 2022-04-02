@@ -1,0 +1,10 @@
+
+PUSH
+
+    ORG 0x081386
+    BYTE 0x27 // 0x24 + 3
+
+    ORG 0x0813A2
+    BYTE 0x19 // 0x16 + 3
+
+POP

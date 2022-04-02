@@ -1,0 +1,14 @@
+// makes cursor slower while holding B
+// hack by stan for fe7 deQoL
+
+// note: this is weird I'm not gonna include it
+
+PUSH
+
+    ORG 0x01C1B8
+    BYTE 4
+
+    ORG 0x01C1BE
+    BYTE 4
+
+POP

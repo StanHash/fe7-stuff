@@ -1,0 +1,10 @@
+// since we prevent print speed changes via options and also prevent talk skip
+// print delay is very slow by default
+// so we set the default speed to fast to be merciful
+
+PUSH
+
+    ORG 0x02DF7E
+    BYTE $40 // mov r0, 0x20 -> mov r0, 0x40
+
+POP

@@ -1,0 +1,14 @@
+// removes the ability to switch to other units using the L button
+// hack by stan for fe7 deQoL
+
+PUSH
+
+    // player phase L handler
+    ORG 0x01C24A+1
+    BYTE $E0 // beq -> b
+
+    // prep screen L handler
+    ORG 0x0309B8+1
+    BYTE $E0 // beq -> b
+
+POP

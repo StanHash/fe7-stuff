@@ -1,0 +1,19 @@
+// minimal options menu
+// hack by stan for fe7 deQoL
+
+PUSH
+
+    ORG 0xCE5840
+OptionsList:
+    // Anim Autocursor Subtitle Music Sfx Window
+    BYTE 0 3 11 6 7 8
+
+    ORG 0xCE5868
+    WORD 6; POIN OptionsList
+    WORD 6; POIN OptionsList
+    WORD 6; POIN OptionsList
+    WORD 6; POIN OptionsList
+    WORD 6; POIN OptionsList
+    WORD 6; POIN OptionsList
+
+POP

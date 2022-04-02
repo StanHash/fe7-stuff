@@ -1,0 +1,9 @@
+// removes fight preview
+// hack by stan for fe7 deQoL
+
+PUSH
+
+    ORG 0x03410C
+    SHORT $46C0 // bne -> nop
+
+POP

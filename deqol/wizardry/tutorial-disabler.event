@@ -1,0 +1,33 @@
+// disables tutorial
+// hack by ???, adapted from feb by stan
+
+PUSH
+
+    // this one is a lil sus
+    // because it affects every check for hard difficulty
+    // hopefully it's fine '=)
+    ORG 0x00D7C6
+    SHORT $46C0 // beq -> nop
+
+    ORG 0x02DF06+1
+    BYTE $E007 // bne -> b
+
+    ORG 0x078FC8
+    SHORT $2000 $4770 // mov r0, 0 ; bx lr
+
+    ORG 0x079004
+    SHORT $2000 $4770 // mov r0, 0 ; bx lr
+
+    ORG 0x07905C
+    SHORT $2000 $4770 // mov r0, 0 ; bx lr
+
+    ORG 0x0790C4
+    SHORT $2000 $4770 // mov r0, 0 ; bx lr
+
+    ORG 0x079104
+    SHORT $2000 $4770 // mov r0, 0 ; bx lr
+
+    ORG 0x07A3E8 // replace IsTutorialDisabled
+    SHORT $2001 $4770 // mov r0, 1 ; bx lr
+
+POP

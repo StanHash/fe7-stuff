@@ -7,17 +7,13 @@ $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
 include $(DEVKITARM)/base_tools
 
-TOOLS_DIR := tools
+TOOLS_DIR := ../fe7-wizardry/tools
 
 EA_DIR := $(TOOLS_DIR)/EventAssembler
 
-EA                := $(EA_DIR)/ColorzCore
-EADEP             := $(EA_DIR)/ea-dep
-PARSEFILE         := $(EA_DIR)/Tools/ParseFile
-PORTRAITFORMATTER := $(EA_DIR)/Tools/PortraitFormatter
-PNG2DMP           := $(EA_DIR)/Tools/Png2Dmp
-COMPRESS          := $(EA_DIR)/Tools/compress
-LYN               := $(EA_DIR)/Tools/lyn
+EA    := $(EA_DIR)/ColorzCore
+EADEP := $(EA_DIR)/ea-dep
+LYN   := $(EA_DIR)/Tools/lyn
 
 FE7_GBA := $(TOOLS_DIR)/fe7-us.gba
 FE7_REF := $(TOOLS_DIR)/fe7-us.s
@@ -27,14 +23,14 @@ FE7_SYM := $(TOOLS_DIR)/fe7-us.sym
 # = MAIN TARGET =
 # ===============
 
-HACK_GBA := hack.gba
+HACK_GBA := deQoL.gba
 MAIN_EVENT := main.event
 
 hack: $(HACK_GBA)
 
 .PHONY: hack
 
-MAIN_DEPENDS := $(shell $(EADEP) $(MAIN_EVENT) -I $(EA_DIR) --add-missings)
+MAIN_DEPENDS = $(shell $(EADEP) $(MAIN_EVENT) -I $(EA_DIR) --add-missings)
 
 $(HACK_GBA): $(FE7_GBA) $(MAIN_EVENT) $(MAIN_DEPENDS)
 	cp -f $(FE7_GBA) $(HACK_GBA)
@@ -59,8 +55,8 @@ LYN_REFERENCE := $(FE7_REF:.s=.o)
 # ========================
 
 # Setting C/ASM include directories up
-INCLUDE_DIRS := wizardry/include
-INCFLAGS     := $(foreach dir, $(INCLUDE_DIRS), -I "$(dir)")
+INCLUDE_DIRS := ../fe7-wizardry/wizardry/include
+INCFLAGS := $(foreach dir, $(INCLUDE_DIRS), -I "$(dir)")
 
 # setting up compilation flags
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork

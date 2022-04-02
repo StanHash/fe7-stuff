@@ -2,3 +2,10 @@
 !.git*
 
 *.zip
+*.gba
+*.sym
+*.sav
+*.asm
+*.o
+*.lyn.event
+*.dmp
