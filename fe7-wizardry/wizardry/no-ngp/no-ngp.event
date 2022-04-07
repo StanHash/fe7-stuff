@@ -1,0 +1,15 @@
+// unlocks all modes without requiring to have beaten the game
+// hack by stan
+
+#include "Extensions/Hack Installation.txt"
+
+#include "src/load-meta-save-hook.lyn.event"
+
+PUSH
+
+    // replace LoadMetaSave
+    ORG $09E566
+    SHORT $46C0 // nop
+    jumpToHack(LoadMetaSaveHook)
+
+POP

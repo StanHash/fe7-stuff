@@ -1,0 +1,19 @@
+// hold L to toggle battle animations on the fly
+// hack by circleseverywhere, adapted by stan
+
+#include "Extensions/Hack Installation.txt"
+
+#include "src/ltoggle.lyn.event"
+
+PUSH
+
+    ORG $02A48A // GetBattleAnimType::end
+    B($02A498)
+
+    ORG $02A494 // BattlePrintDebugHitInfo
+    SHORT $4770 // bx lr
+
+    ORG $02A498
+    WORD $47184B00; POIN LToggleHook
+
+POP

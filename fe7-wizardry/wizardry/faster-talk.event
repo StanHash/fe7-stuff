@@ -1,0 +1,10 @@
+// makes text speed overall faster
+// hack by stan
+
+PUSH
+
+    ORG $1C4038
+    // slow normal fast instant
+    BYTE 4 2 1 0
+
+POP

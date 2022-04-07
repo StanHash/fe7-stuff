@@ -1,0 +1,14 @@
+// permanent casual mode (aka units don't die permanently)
+// hack by stan
+
+PUSH
+
+    // undeploy unit instead of killing them
+    ORG $017EA0
+    BYTE 9
+
+    // do not clear supports on "death"
+    ORG $017EA8
+    SHORT $46C0 $46C0
+
+POP

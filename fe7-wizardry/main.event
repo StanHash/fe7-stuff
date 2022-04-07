@@ -1,12 +1,3 @@
-
-    // Set prologue weather
-    // ORG $0C9A212
-    // BYTE 5
-
-    // Set prologue objective
-    // ORG $0C9A290
-    // BYTE 5
-
     ORG $0D00000
 
     #include "wizardry/anti-huffman.event"
@@ -17,6 +8,9 @@
     #include "wizardry/player-leader-fix/player-leader-fix.event"
     #include "wizardry/fast-stuff/fast-stuff.event"
 
+    // #include "wizardry/faster-talk.event"
+    // #include "wizardry/ltoggle/ltoggle.event"
+
     // #include "wizardry/flames-recolor/flames-recolor.event"
     // #include "wizardry/realtime-score/realtime-score.event"
     // #include "wizardry/disable-minimap/disable-minimap.event"
@@ -25,6 +19,8 @@
     // #include "wizardry/stat-bar-cap/stat-bar-cap.event"
     // #include "wizardry/ballista-canto-fix/ballista-canto-fix.event"
     // #include "wizardry/map-bgm-override/map-bgm-override.event"
+    // #include "wizardry/hardwired-casual.event"
+    // #include "wizardry/no-ngp/no-ngp.event"
 
     // ASSERT CURRENTOFFSET >= $0D00000 && CURRENTOFFSET <= $0D90000
     ASSERT CURRENTOFFSET - $0D00000
