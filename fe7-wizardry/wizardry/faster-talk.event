@@ -3,6 +3,10 @@
 
 PUSH
 
+    // wm talk obey std print delay
+    ORG $0B500A
+    SHORT $46C0 $46C0
+
     ORG $1C4038
     // slow normal fast instant
     BYTE 4 2 1 0

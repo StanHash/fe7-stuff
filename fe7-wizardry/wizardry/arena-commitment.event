@@ -1,0 +1,9 @@
+// prevents the player from cancelling an arena battle
+// hack by stan
+
+PUSH
+
+    ORG $04B86A+1
+    BYTE $E0 // beq -> b
+
+POP
