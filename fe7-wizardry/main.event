@@ -7,6 +7,7 @@
     #include "wizardry/generic-face-fix/generic-face-fix.event"
     #include "wizardry/player-leader-fix/player-leader-fix.event"
     #include "wizardry/fast-stuff/fast-stuff.event"
+    #include "wizardry/many_icons/many_icons.event"
 
     // #include "wizardry/faster-talk.event"
     // #include "wizardry/ltoggle/ltoggle.event"

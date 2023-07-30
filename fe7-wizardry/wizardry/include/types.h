@@ -15,7 +15,18 @@ typedef uint64_t  u64;
 typedef uintptr_t uptr;
 typedef int8_t    bool;
 
+typedef i32 fi8;
+typedef i32 fi16;
+typedef u32 fu8;
+typedef u32 fu16;
+
 struct Vec2
 {
     i16 x, y;
+};
+
+enum
+{
+    FALSE,
+    TRUE,
 };
